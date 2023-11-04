@@ -15,6 +15,14 @@ Currently MythicMate supports rolling flat, rolling with advantadge and disavant
 ## Web Scraping
 A lot of D&amp;D content is locked behind a paywall, but there are user ran sites like the DND5eWikiDot, that you can gather the important things from like rules, and spell details. When I run the password locked "/update" command, it searches through the links on the homepage of this wiki, and pulls information from them, saving them as formatted text files on my computer. These files are formatted in Discord's Markdown format. When a user wants to look up something, it references the available text files, and offers autocomplete suggestions. The files are then simply passed into a discord message with no further formatting needed, because it is all taken care of when scraping the data. This results in lightning fast searches.
 
+## Project Structure
+The project is managed by Maven, each of the included directories are their own packages - the main program is located in the Bot package, DiscordBot.java. The code is written entirely in Java, and the work was 100% done by me.
+
+Included dependencies:
+- JSoup: an open source Java HTML parsing library
+- JDA: Java Discord API, a clean and full wrapping of the Discord REST API
+- Apache Commons Lang: This is actually only used for their stop-watch, to ensure the webscraping isn't happening too quickly.
+
 ## Future Plans
 I would like for MythicMate to feel like an actual D&amp;D companion, someone who is a part of your server, helping you play the game that you love to play! I am researching conversational AI, and hope to soon be able to add light banter to rolling commands, and present information in a more conversational format to the users.
 
