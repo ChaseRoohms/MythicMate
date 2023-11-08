@@ -48,8 +48,9 @@ public class PlayerClass implements ICommand {
     }
 
     @Override
-    public void execute(SlashCommandInteractionEvent event) {
+    public Runnable execute(SlashCommandInteractionEvent event) {
         String lookup = Objects.requireNonNull(event.getOption("lookup")).getAsString();
         QueryCommand.query(event, lookup);
+        return null;
     }
 }

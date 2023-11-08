@@ -27,14 +27,14 @@ public class QueryCommand {
                     filename);
             Scanner details = new Scanner(file);                    //Scan the file
             if(commandName.equalsIgnoreCase("spell")){
-                event.replyEmbeds(SpellEmbedSender.getSpellEmbed(details).build()).setEphemeral(true).queue();
+                event.getHook().sendMessageEmbeds(SpellEmbedSender.getSpellEmbed(details).build()).setEphemeral(true).queue();
             } else {
-                event.reply("Found it!").queue();
+                event.getHook().sendMessage("Found it!").queue();
                 MessageSender.sendMessage(chan, toSend, details);       //Send the scanner to message sender
             }
             details.close();                                        //Close the scanner
         }catch (FileNotFoundException e) {
-            event.reply("Hmm... I'm not seeing any " + commandName +" named: " +
+            event.getHook().sendMessage("Hmm... I'm not seeing any " + commandName +" named: " +
                     lookup + ", check for spelling errors!").setEphemeral(true).queue();
         }
     }

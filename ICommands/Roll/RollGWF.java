@@ -33,7 +33,8 @@ public class RollGWF implements ICommand {
     }
 
     @Override
-    public void execute(SlashCommandInteractionEvent event) {
+    public Runnable execute(SlashCommandInteractionEvent event) {
         RollCommand.roll(event, RollCommand.RollType.GWF);
+        return null;
     }
 }

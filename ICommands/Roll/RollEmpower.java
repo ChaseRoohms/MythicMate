@@ -37,7 +37,8 @@ public class RollEmpower implements ICommand {
     }
 
     @Override
-    public void execute(SlashCommandInteractionEvent event) {
+    public Runnable execute(SlashCommandInteractionEvent event) {
         RollCommand.roll(event, RollCommand.RollType.EMPOWER);
+        return null;
     }
 }

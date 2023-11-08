@@ -51,10 +51,11 @@ public class PlayerSubclass implements ICommand {
     }
 
     @Override
-    public void execute(SlashCommandInteractionEvent event) {
+    public Runnable execute(SlashCommandInteractionEvent event) {
         String parentClass = Objects.requireNonNull(event.getOption("parent-class")).getAsString();
         String subClass = Objects.requireNonNull(event.getOption("lookup")).getAsString();
         String lookup = parentClass + " " +subClass;
         QueryCommand.query(event, lookup);
+        return null;
     }
 }

@@ -1,18 +1,17 @@
 package ICommands;
 
-import ICommandsHelpers.QueryCommand;
 import Events.ICommand;
+import ICommandsHelpers.ChatGPT;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class Lineage implements ICommand {
-    private final String name = "lineage";
-    private final String description = "Look up a lineage by name.";
+public class Ask implements ICommand {
+    private final String name = "ask";
+    private final String description = "Ask MythicMate a question! Powered by ChatGPT 3.5, this feature is in beta.";
 
 
     @Override
@@ -28,15 +27,15 @@ public class Lineage implements ICommand {
     @Override
     public List<OptionData> getOptions() {
         List<OptionData> optionData = new ArrayList<>();
-        optionData.add(new OptionData(OptionType.STRING, "lookup",
-                "The lineage you would like to lookup", true, true));
+        optionData.add(new OptionData(OptionType.STRING, "question",
+                "The question you would like to ask", true));
         return optionData;
     }
 
     @Override
     public Runnable execute(SlashCommandInteractionEvent event) {
-        String lookup = Objects.requireNonNull(event.getOption("lookup")).getAsString();
-        QueryCommand.query(event, lookup);
+        event.deferReply(true).queue();
+        ChatGPT.askChat(event);
         return null;
     }
 }

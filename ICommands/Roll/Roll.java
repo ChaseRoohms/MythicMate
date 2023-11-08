@@ -33,7 +33,8 @@ public class Roll implements ICommand {
     }
 
     @Override
-    public void execute(SlashCommandInteractionEvent event) {
+    public Runnable execute(SlashCommandInteractionEvent event) {
         RollCommand.roll(event, RollCommand.RollType.REG);
+        return null;
     }
 }

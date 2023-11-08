@@ -30,7 +30,8 @@ public class CommandList implements ICommand {
     }
 
     @Override
-    public void execute(SlashCommandInteractionEvent event) {
+    public Runnable execute(SlashCommandInteractionEvent event) {
         event.replyEmbeds(CommandsDatabase.getCommandEmbed().build()).queue();
+        return null;
     }
 }

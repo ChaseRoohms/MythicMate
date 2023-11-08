@@ -2,13 +2,11 @@ package ICommands;
 
 import Database.RulesDatabase;
 import Events.ICommand;
-import Functions.MessageSender;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Cover implements ICommand {
     private final String name = "cover";
@@ -32,7 +30,8 @@ public class Cover implements ICommand {
     }
 
     @Override
-    public void execute(SlashCommandInteractionEvent event) {
+    public Runnable execute(SlashCommandInteractionEvent event) {
         event.replyEmbeds(RulesDatabase.getCoverEmbed().build()).setEphemeral(true).queue();
+        return null;
     }
 }

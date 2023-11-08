@@ -41,11 +41,12 @@ public class Update implements ICommand {
     }
 
     @Override
-    public void execute(SlashCommandInteractionEvent event) {
+    public Runnable execute(SlashCommandInteractionEvent event) {
         try{
             UpdateCommand.update(event);
         }catch(IOException e){
             event.reply(e.getMessage()).queue();
         }
+        return null;
     }
 }

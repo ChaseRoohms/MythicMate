@@ -35,8 +35,10 @@ public class Spell implements ICommand {
     }
 
     @Override
-    public void execute(SlashCommandInteractionEvent event) {
+    public Runnable execute(SlashCommandInteractionEvent event) {
+        event.deferReply(true).queue();
         String lookup = Objects.requireNonNull(event.getOption("lookup")).getAsString();
         QueryCommand.query(event, lookup);
+        return null;
     }
 }

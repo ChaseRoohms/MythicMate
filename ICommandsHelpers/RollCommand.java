@@ -18,6 +18,7 @@ public class RollCommand {
     /*Function(s))                                                                              */
     /*==========================================================================================*/
     public static void roll(SlashCommandInteractionEvent event, RollType rollType) {
+
         int empowerParam = 0;
 
         ArrayList<String> dice = new ArrayList<>(Arrays.asList(Objects.requireNonNull(
