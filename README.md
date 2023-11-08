@@ -15,6 +15,12 @@ Currently MythicMate supports rolling flat, rolling with advantadge and disavant
 ## Web Scraping
 A lot of D&amp;D content is locked behind a paywall, but there are user ran sites like the DND5eWikiDot, that you can gather the important things from like rules, and spell details. When I run the password locked "/update" command, it searches through the links on the homepage of this wiki, and pulls information from them, saving them as formatted text files on my computer. These files are formatted in Discord's Markdown format. When a user wants to look up something, it references the available text files, and offers autocomplete suggestions. The files are then simply passed into a discord message with no further formatting needed, because it is all taken care of when scraping the data. This results in lightning fast searches.
 
+## AI Integration
+While a lot of information about D&D is locked behind a paywall, even more of it is scattered across random iterations of rule books, and source material. Utilizing ChatGPT's interface, and precise preformatted instruction, I have created the "/ask" command. The user simply types "/ask" and then their question, and my bot accesses the API and runs a formatted request. The answer is then quickly returned in a message for them.
+
+## Multithreaded Implementation
+A Discord bot with AI integration is great until you realize the processing delays involved with AI, specifically ChatGPT's API. When one user had a hanging request for an AI generated rules check, no other user was capable of running commands. To solve this I implemented multithreading, allowing each command to create and run on a new thread as soon as it is called, keeping the main bot free to process incoming commands.
+
 ## Project Structure
 The project is managed by Maven, each of the included directories are their own packages - the main program is located in the Bot package, DiscordBot.java. The code is written entirely in Java, and the work was 100% done by me.
 
