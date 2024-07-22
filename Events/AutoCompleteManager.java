@@ -1,5 +1,6 @@
 package Events;
 
+import Bot.DiscordBot;
 import net.dv8tion.jda.api.events.interaction.command.CommandAutoCompleteInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.Command;
@@ -11,11 +12,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class AutoCompleteManager extends ListenerAdapter {
-    private final static String featOptionPath = "/Users/neonvariant/Documents/TempDatabase/FeatList.txt";
-    private final static String spellOptionPath = "/Users/neonvariant/Documents/TempDatabase/SpellList.txt";
-    private final static String lineageOptionPath = "/Users/neonvariant/Documents/TempDatabase/LineageList.txt";
-    private final static String subclassOptionPath = "/Users/neonvariant/Documents/TempDatabase/SubclassList.txt";
-    //private final static String classOptionPath = "/Users/neonvariant/Documents/TempDatabase/ClassList.txt";
+    private final static String featOptionPath = DiscordBot.ROOTDIR + "/database/FeatList.txt";
+    private final static String spellOptionPath = DiscordBot.ROOTDIR + "/database/SpellList.txt";
+    private final static String lineageOptionPath = DiscordBot.ROOTDIR + "/database/LineageList.txt";
+    private final static String subclassOptionPath = DiscordBot.ROOTDIR + "/database/SubclassList.txt";
+    //private final static String classOptionPath = "database/ClassList.txt";
 
     //private static String[] classOptions;
     private static String[] featOptions;

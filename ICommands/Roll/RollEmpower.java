@@ -30,7 +30,7 @@ public class RollEmpower implements ICommand {
     public List<OptionData> getOptions() {
         List<OptionData> optionData = new ArrayList<>();
         optionData.add(new OptionData(OptionType.INTEGER, "this-or-lower",
-                "Empower any roll below this number", true).setMinValue(1));
+                "Empower any roll less than or equal to this number", true).setMinValue(1));
         optionData.add(new OptionData(OptionType.STRING, "dice",
                 "The dice you want to roll", true));
         return optionData;

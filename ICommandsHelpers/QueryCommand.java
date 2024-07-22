@@ -1,5 +1,6 @@
 package ICommandsHelpers;
 
+import Bot.DiscordBot;
 import Functions.MessageSender;
 import Functions.SpellEmbedSender;
 import net.dv8tion.jda.api.entities.channel.unions.MessageChannelUnion;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 
 public class QueryCommand {
     public static void query(SlashCommandInteractionEvent event, String lookup) {
+        event.deferReply(true).queue();
 
         String commandName = event.getName();
         StringBuilder toSend = new StringBuilder();
@@ -23,7 +25,7 @@ public class QueryCommand {
 
         //Try to find and open the file
         try{
-            File file = new File("/Users/neonvariant/Documents/TempDatabase/" + commandName + "/" +
+            File file = new File(DiscordBot.ROOTDIR + "/database/" + commandName + "/" +
                     filename);
             Scanner details = new Scanner(file);                    //Scan the file
             if(commandName.equalsIgnoreCase("spell")){

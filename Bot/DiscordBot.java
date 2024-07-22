@@ -6,17 +6,27 @@ import Events.AutoCompleteManager;
 import Events.CommandManager;
 import ICommands.*;
 import ICommands.Roll.*;
-import ICommandsHelpers.ChatGPT;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
+
 public class DiscordBot {
+    public static String ROOTDIR;
+
     /*Main                                                                                      */
     /*==========================================================================================*/
     public static void main(String[] args){
-        //ChatGPT.askChat("Whats the circumfrence of the moon?");
+        if(args.length == 0){
+            System.out.println("Expects one argument");
+            System.out.println("    String: Path to folder (eg /directory/directory/MythicMate)");
+            return;
+        }
+        ROOTDIR = args[0];
+
+        System.out.println(args[0]);
+
         Authenticate auth = new Authenticate();                 //Authenticator Object
         JDA bot = JDABuilder.createDefault(auth.getToken())     //Build bot (token hidden for safety)
                 .setActivity(Activity.customStatus("Dice Sage & Rules Lawyer"))

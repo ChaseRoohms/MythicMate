@@ -1,5 +1,6 @@
 package Scrapers;
 
+import Bot.DiscordBot;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import org.jsoup.Jsoup;
@@ -23,11 +24,11 @@ public class WikiScraper {
     private final static Set<String> classes = new HashSet<>(Arrays.asList("/artificer", "/barbarian", "/bard",
             "/blood-hunter", "/cleric", "/druid", "/fighter", "/monk", "/paladin", "/ranger", "/rogue", "/sorcerer",
             "/warlock", "/wizard"));
-    private final static String spellListPath = "/Users/neonvariant/Documents/TempDatabase/SpellList.txt";
-    private final static String featListPath = "/Users/neonvariant/Documents/TempDatabase/FeatList.txt";
-    private final static String lineageListPath = "/Users/neonvariant/Documents/TempDatabase/LineageList.txt";
-    private final static String classListPath = "/Users/neonvariant/Documents/TempDatabase/ClassList.txt";
-    private final static String subclassListPath = "/Users/neonvariant/Documents/TempDatabase/SubclassList.txt";
+    private final static String spellListPath = DiscordBot.ROOTDIR + "/database/SpellList.txt";
+    private final static String featListPath = DiscordBot.ROOTDIR + "/database/FeatList.txt";
+    private final static String lineageListPath = DiscordBot.ROOTDIR + "/database/LineageList.txt";
+    private final static String classListPath = DiscordBot.ROOTDIR + "/database/ClassList.txt";
+    private final static String subclassListPath = DiscordBot.ROOTDIR + "/database/SubclassList.txt";
 
     public static void scrape(SlashCommandInteractionEvent event) throws IOException {
         int count = 0;
@@ -157,7 +158,7 @@ public class WikiScraper {
                 .replace("/", "").toLowerCase();
 
         //Set database path
-        String path = "/Users/neonvariant/Documents/TempDatabase/" + databaseType + "/"
+        String path = "database/" + databaseType + "/"
                 + fileName + ".txt";
 
         //Scrape away

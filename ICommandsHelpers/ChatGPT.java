@@ -57,9 +57,11 @@ public class ChatGPT {
                 response.append(inputLine);
             }
             in.close();
+            String answer = extractContentFromResponse(response.toString())
+                    .replace("\\\"", "\"")
+                    .replace("\\n", System.getProperty("line.separator"));
 
-            answerEmbed.setDescription(extractContentFromResponse(response.toString()).replace("\\\"", "\""));
-
+            answerEmbed.setDescription(answer);
             event.getHook().sendMessageEmbeds(answerEmbed.build()).queue();
         }catch(Exception e){
             answerEmbed.setDescription(e.getMessage());
